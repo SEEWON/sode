@@ -48,6 +48,7 @@ export default function Home() {
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_s}
+                  today={item.today}
                 />
               ))}
             </div>
@@ -62,6 +63,7 @@ export default function Home() {
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_w}
+                  today={item.today}
                 />
               ))}
             </div>
@@ -80,6 +82,7 @@ export default function Home() {
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_e}
+                  today={item.today}
                 />
               ))}
             </div>
@@ -98,6 +101,7 @@ export default function Home() {
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_p}
+                  today={item.today}
                 />
               ))}
             </div>

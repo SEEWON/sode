@@ -5,6 +5,7 @@ export type dummyType = {
   done_w: boolean;
   done_e: boolean;
   done_p: boolean;
+  today: boolean;
 }[];
 
 export const dummy: dummyType = [
@@ -15,6 +16,7 @@ export const dummy: dummyType = [
     done_w: false,
     done_e: true,
     done_p: false,
+    today: false,
   },
   {
     date: '20221220',
@@ -23,6 +25,7 @@ export const dummy: dummyType = [
     done_w: true,
     done_e: true,
     done_p: false,
+    today: false,
   },
   {
     date: '20221221',
@@ -31,6 +34,7 @@ export const dummy: dummyType = [
     done_w: false,
     done_e: true,
     done_p: false,
+    today: false,
   },
   {
     date: '20221222',
@@ -39,6 +43,7 @@ export const dummy: dummyType = [
     done_w: true,
     done_e: true,
     done_p: false,
+    today: false,
   },
   {
     date: '20221223',
@@ -47,6 +52,7 @@ export const dummy: dummyType = [
     done_w: false,
     done_e: true,
     done_p: false,
+    today: false,
   },
   {
     date: '20221224',
@@ -55,6 +61,7 @@ export const dummy: dummyType = [
     done_w: true,
     done_e: true,
     done_p: true,
+    today: false,
   },
   {
     date: '20221225',
@@ -63,6 +70,7 @@ export const dummy: dummyType = [
     done_w: false,
     done_e: true,
     done_p: true,
+    today: false,
   },
   {
     date: '20221226',
@@ -71,6 +79,7 @@ export const dummy: dummyType = [
     done_w: true,
     done_e: true,
     done_p: true,
+    today: false,
   },
   {
     date: '20221227',
@@ -79,13 +88,15 @@ export const dummy: dummyType = [
     done_w: false,
     done_e: true,
     done_p: true,
+    today: false,
   },
   {
     date: '20221228',
     weekend: false,
-    done_s: true,
+    done_s: false,
     done_w: true,
-    done_e: true,
-    done_p: true,
+    done_e: false,
+    done_p: false,
+    today: true,
   },
 ];
