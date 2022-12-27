@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
+import { dummy, dummyType } from './api/dummy';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,6 +10,9 @@ export default function Home() {
   const options: { [key: string]: string } = {
     weekday: 'long',
   };
+
+  const dummyData: dummyType = dummy;
+  console.log(dummyData);
 
   return (
     <>
@@ -22,52 +25,75 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <p>
+            sode_매일매일의 힘 (2023.01.02~)
+            <br />
+            지난 열흘간, 시원의 일일 progress를 기록합니다.
+            <br />
+            <br />
             Today: {date.getFullYear()}.{date.getMonth() + 1}.{date.getDate()}{' '}
             {date.toLocaleDateString('ko-KR', options)}
           </p>
         </div>
-
-        <div className={styles.center}>
-          <div className={styles.square}></div>
+        <div className={styles.guide}>
+          본 페이지는 모바일 뷰에 최적화되어 있습니다.
         </div>
-
         <div className={styles.grid}>
           <div className={styles.card}>
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
+            <h2 className={inter.className}>Startup</h2>
             <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
+              🚀 오늘의 업무(주로 개발, 회의 등)
             </p>
+            <div>
+              {dummyData.map((item) => (
+                <span className={styles.square}></span>
+              ))}
+            </div>
           </div>
 
           <div className={styles.card}>
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
+            <h2 className={inter.className}>Workout</h2>
+            <p className={inter.className}>💪 매일 1시간 정도의 운동</p>
+            <div>
+              {dummyData.map((item) => (
+                <span className={styles.square}></span>
+              ))}
+            </div>
           </div>
 
           <div className={styles.card}>
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
+            <h2 className={inter.className}>English</h2>
             <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
+              📚 하루 한 시간 이상
+              <br />
+              토플, 오픽 취득을 위한 공부
             </p>
+            <div>
+              {dummyData.map((item) => (
+                <span className={styles.square}></span>
+              ))}
+            </div>
           </div>
 
-          <div className={styles.card}>
+          <a
+            href="https://solved.ac/profile/andyaaa78"
+            className={styles.card}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
+              PS | Algorithms <span>-&gt;</span>
             </h2>
             <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
+              💻️ 하루 한 문제
+              <br />
+              알고리즘 문제 해결
             </p>
-          </div>
+            <div>
+              {dummyData.map((item) => (
+                <span className={styles.square}></span>
+              ))}
+            </div>
+          </a>
         </div>
       </main>
     </>

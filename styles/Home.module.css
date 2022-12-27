@@ -120,6 +120,7 @@
   overflow: hidden;
   box-shadow: 0px 2px 8px -1px #0000001a;
   border: 1px solid green;
+  margin: 1.5px;
 }
 
 .square::before,
@@ -174,6 +175,10 @@
 
 /* Mobile */
 @media (max-width: 700px) {
+  .guide {
+    display: none;
+  }
+
   .content {
     padding: 4rem;
   }
@@ -181,7 +186,7 @@
   .grid {
     grid-template-columns: 1fr;
     margin-bottom: 120px;
-    max-width: 320px;
+    max-width: 370px;
     text-align: center;
   }
 
