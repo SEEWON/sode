@@ -13,7 +13,6 @@ export default function Home() {
   };
 
   const dummyData: dummyType = dummy;
-  console.log(dummyData);
 
   return (
     <>
@@ -43,12 +42,14 @@ export default function Home() {
             <h2 className={inter.className}>🚀 Startup</h2>
             <p className={inter.className}>오늘의 업무(주로 개발, 회의 등)</p>
             <div>
-              {dummyData.map((item) => (
+              {dummyData.map((item, index) => (
                 <ProgressItem
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_s}
                   today={item.today}
+                  idx={index}
+                  displayNoti
                 />
               ))}
             </div>
@@ -58,12 +59,13 @@ export default function Home() {
             <h2 className={inter.className}>💪 Workout</h2>
             <p className={inter.className}>매일 1시간 정도의 운동</p>
             <div>
-              {dummyData.map((item) => (
+              {dummyData.map((item, index) => (
                 <ProgressItem
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_w}
                   today={item.today}
+                  idx={index}
                 />
               ))}
             </div>
@@ -77,12 +79,13 @@ export default function Home() {
               토플, 오픽 취득을 위한 공부
             </p>
             <div>
-              {dummyData.map((item) => (
+              {dummyData.map((item, index) => (
                 <ProgressItem
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_e}
                   today={item.today}
+                  idx={index}
                 />
               ))}
             </div>
@@ -96,12 +99,13 @@ export default function Home() {
               알고리즘 문제 해결
             </p>
             <div>
-              {dummyData.map((item) => (
+              {dummyData.map((item, index) => (
                 <ProgressItem
                   key={item.date}
                   weekend={item.weekend}
                   done={item.done_p}
                   today={item.today}
+                  idx={index}
                 />
               ))}
             </div>
