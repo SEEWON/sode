@@ -79,17 +79,12 @@
   margin: 1.5px;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid green; */
 }
 
 .dateNoti {
   opacity: 0.6;
   font-size: 0.5rem;
   line-height: 1.5;
-  display: flex;
-  justify-content: center;
-  align-self: center;
-  /* border: 1px solid red; */
 }
 .dateNoti span {
   width: 25px;

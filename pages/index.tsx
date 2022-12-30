@@ -57,7 +57,7 @@ export default function Home() {
 
           <div className={styles.card}>
             <h2 className={inter.className}>💪 Workout</h2>
-            <p className={inter.className}>매일 1시간 정도의 운동</p>
+            <p className={inter.className}>하루 1시간 정도의 운동</p>
             <div>
               {dummyData.map((item, index) => (
                 <ProgressItem
