@@ -1,7 +1,6 @@
 const express = require('express');
 const {
   readCollection,
-  readCollection2,
   createCollection,
   insertOneInCollection,
   insertManyInCollection,
@@ -27,10 +26,14 @@ const data = [
   { name: 'DB', age: 23 },
 ];
 
-//비동기 처리 전
-const res2 = readCollection2('customers');
-console.log(res2); //undefined
+const func = async () => {
+  await dropCollection('customers123456', q, d);
+  await dropCollection('customers12345', q, d);
+  await dropCollection('customers1234', q, d);
+  await dropCollection('customers', q, d);
+  await dropCollection('customers2', q, d);
+};
+func();
 
-//비동기 처리 후
-const func = async () => console.log(await readCollection('customers'));
-func(); // 기다렸다가 결과 출력
+// const read = async () => console.log(await readCollection('customers1234567'));
+// read();
