@@ -1,5 +1,6 @@
 const DBinit = () => {
   const { MongoClient, ServerApiVersion } = require('mongodb');
+  require('dotenv').config();
   const uri = process.env.DBURI;
 
   const client = new MongoClient(uri, {
