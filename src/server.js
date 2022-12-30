@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   readCollection,
+  readCollection2,
   createCollection,
   insertOneInCollection,
   insertManyInCollection,
@@ -25,6 +26,11 @@ const data = [
   { name: 'SK', age: 22 },
   { name: 'DB', age: 23 },
 ];
-readCollection('customers');
-// insertManyInCollection('customers', data);
-// updateManyInCollection('customers', q, d);
+
+//비동기 처리 전
+const res2 = readCollection2('customers');
+console.log(res2); //undefined
+
+//비동기 처리 후
+const func = async () => console.log(await readCollection('customers'));
+func(); // 기다렸다가 결과 출력

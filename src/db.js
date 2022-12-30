@@ -15,7 +15,19 @@ const DBinit = () => {
 };
 
 // Collection 내 document 모두 list 모듈
-const readCollection = (collectionName) => {
+const readCollection = async (collectionName) => {
+  const { client, DBName } = DBinit();
+  await client.connect();
+  console.log('Connected to server');
+  const db = client.db(DBName);
+  const collection = db.collection(collectionName);
+  const findResult = await collection.find({}).toArray();
+  // console.log('Found documents =>', findResult);
+  return findResult;
+};
+module.exports.readCollection = readCollection;
+
+const readCollection2 = (collectionName) => {
   const { client, DBName } = DBinit();
   client.connect((err, db) => {
     const dbo = db.db(DBName);
@@ -24,12 +36,13 @@ const readCollection = (collectionName) => {
       .find({})
       .toArray((err, result) => {
         if (err) throw err;
-        console.log(result);
+        // console.log(result);
         db.close();
+        return result;
       });
   });
 };
-module.exports.readCollection = readCollection;
+module.exports.readCollection2 = readCollection2;
 
 // 새 collection 생성 모듈
 const createCollection = (newCollectionName) => {
