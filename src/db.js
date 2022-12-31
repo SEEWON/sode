@@ -15,6 +15,28 @@ const DBinit = () => {
   return { client, DBName };
 };
 
+// Collection 내 최근 10개 documents read 모듈
+const getRecent10 = async (collectionName) => {
+  const { client, DBName } = DBinit();
+  await client.connect();
+  console.log('Connected to server');
+
+  const db = client.db(DBName);
+  const collection = db.collection(collectionName);
+  try {
+    const findResult = await collection
+      .find()
+      .skip((await collection.countDocuments()) - 10)
+      .toArray();
+    return findResult;
+  } catch (err) {
+    console.error(err);
+  } finally {
+    client.close();
+  }
+};
+module.exports.getRecent10 = getRecent10;
+
 // Collection 내 document 모두 list 모듈
 const readCollection = async (collectionName) => {
   const { client, DBName } = DBinit();
@@ -29,6 +51,8 @@ const readCollection = async (collectionName) => {
     return findResult;
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.readCollection = readCollection;

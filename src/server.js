@@ -1,4 +1,5 @@
 const {
+  getRecent10,
   readCollection,
   createCollection,
   insertOneInCollection,
@@ -13,12 +14,17 @@ const {
 const express = require('express');
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send;
+app.get('/', async (req, res) => {
+  const data = await getRecent10('daily_sode');
+  res.json(data);
+});
+
+app.listen(8080, () => {
+  console.log(`listening on port ${8080}`);
 });
 
 const func = async () => {
-  await createCollection('daily_sode223');
+  await getRecent10('daily_sode');
 };
 func();
 
