@@ -45,6 +45,8 @@ const createCollection = async (newCollectionName) => {
     console.log(`Successfully created collection ${newCollectionName}`);
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.createCollection = createCollection;
@@ -62,6 +64,8 @@ const insertOneInCollection = async (insertingCollection, newObj) => {
     console.log('1 document inserted');
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.insertOneInCollection = insertOneInCollection;
@@ -79,6 +83,8 @@ const insertManyInCollection = async (insertingCollection, newObjArr) => {
     console.log(`${res.insertedCount} documents inserted`);
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.insertManyInCollection = insertManyInCollection;
@@ -97,6 +103,8 @@ const deleteOneInCollection = async (deletingCollection, query) => {
     console.log('1 document deleted');
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.deleteOneInCollection = deleteOneInCollection;
@@ -115,6 +123,8 @@ const deleteManyInCollection = async (deletingCollection, query) => {
     console.log(`${res.deletedCount} documents deleted`);
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.deleteManyInCollection = deleteManyInCollection;
@@ -134,6 +144,8 @@ const updateOneInCollection = async (updatingCollection, query, newValue) => {
     console.log(`1 document updated`);
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.updateOneInCollection = updateOneInCollection;
@@ -153,6 +165,8 @@ const updateManyInCollection = async (updatingCollection, query, newValue) => {
     console.log(`${res.modifiedCount} document(s) updated`);
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.updateManyInCollection = updateManyInCollection;
@@ -170,6 +184,8 @@ const dropCollection = async (dropCollectionName) => {
     console.log(`Successfully dropped collection ${dropCollectionName}`);
   } catch (err) {
     console.error(err);
+  } finally {
+    client.close();
   }
 };
 module.exports.dropCollection = dropCollection;
