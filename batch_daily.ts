@@ -1,4 +1,4 @@
-const { insertOneInCollection, updateOneInCollection } = require('./db');
+import { insertOneInCollection, updateOneInCollection } from './pages/api/db';
 
 const q = { age: { $gt: 20 } };
 const d = { $set: { name: 'Seeeean', age: 23 } };

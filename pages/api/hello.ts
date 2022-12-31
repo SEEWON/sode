@@ -1,13 +1,24 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { getRecent10, updateOneInCollection } from './db';
 
-type Data = {
-  name: string
-}
+export type Data = {
+  date: string;
+  weekend: boolean;
+  done_s: boolean;
+  done_w: boolean;
+  done_e: boolean;
+  done_p: boolean;
+  today: boolean;
+}[];
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+  if (req.method === 'PUT') {
+    // updateOneInCollection;
+  } else {
+    const d = await getRecent10('daily_sode');
+    res.status(200).json(d);
+  }
+};
+
+export default handler;
