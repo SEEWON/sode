@@ -1,4 +1,14 @@
-import { Data } from './hello';
+//db.ts
+
+export type Data = {
+  date: string;
+  weekend: boolean;
+  done_s: boolean;
+  done_w: boolean;
+  done_e: boolean;
+  done_p: boolean;
+  today: boolean;
+}[];
 
 const DBinit = () => {
   const { MongoClient, ServerApiVersion } = require('mongodb');

@@ -1,10 +1,10 @@
+//index.tsx
 import Head from 'next/head';
 import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import ProgressItem from '../components/ProgressItem';
 import { GetServerSideProps } from 'next';
-import { getRecent10 } from './api/db';
-import { Data } from './api/hello';
+import { Data, getRecent10 } from './api/db';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,6 +12,44 @@ const Home = ({ datas }: { datas: Data }) => {
   const date: Date = new Date();
   const options: { [key: string]: string } = {
     weekday: 'long',
+  };
+
+  const patchStatus = async (task: string) => {
+    await fetch('/api/status', {
+      method: 'PATCH',
+      body: JSON.stringify({
+        target: task,
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+  };
+
+  const onClickStatus = async (task: string) => {
+    let target;
+
+    try {
+      if (task === 's') {
+        target = 'done_s';
+        patchStatus(target);
+        alert('오늘도 일하느라 고생 많았어!😎');
+      } else if (task === 'w') {
+        target = 'done_w';
+        patchStatus(target);
+        alert('오운완🔥');
+      } else if (task === 'e') {
+        target = 'done_e';
+        patchStatus(target);
+        alert('미국까지 가보자고🛫');
+      } else if (task === 'p') {
+        target = 'done_p';
+        patchStatus(target);
+        alert('세상에,, 고생 많았어!😆');
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -38,7 +76,7 @@ const Home = ({ datas }: { datas: Data }) => {
           본 페이지는 모바일 뷰에 최적화되어 있습니다.
         </div>
         <div className={styles.grid}>
-          <div className={styles.card}>
+          <div className={styles.card} onClick={() => onClickStatus('s')}>
             <h2 className={inter.className}>🚀 Startup</h2>
             <p className={inter.className}>오늘의 업무(주로 개발, 회의 등)</p>
             <div>
@@ -55,7 +93,7 @@ const Home = ({ datas }: { datas: Data }) => {
             </div>
           </div>
 
-          <div className={styles.card}>
+          <div className={styles.card} onClick={() => onClickStatus('w')}>
             <h2 className={inter.className}>💪 Workout</h2>
             <p className={inter.className}>하루 1시간 정도의 운동</p>
             <div>
@@ -71,7 +109,7 @@ const Home = ({ datas }: { datas: Data }) => {
             </div>
           </div>
 
-          <div className={styles.card}>
+          <div className={styles.card} onClick={() => onClickStatus('e')}>
             <h2 className={inter.className}>📚 English</h2>
             <p className={inter.className}>
               하루 한 시간 이상
@@ -91,7 +129,7 @@ const Home = ({ datas }: { datas: Data }) => {
             </div>
           </div>
 
-          <div className={styles.card}>
+          <div className={styles.card} onClick={() => onClickStatus('p')}>
             <h2 className={inter.className}>💻️ PS | Algorithms</h2>
             <p className={inter.className}>
               하루 한 문제
