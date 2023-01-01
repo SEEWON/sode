@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 import ProgressItem from '../components/ProgressItem';
 import { GetServerSideProps } from 'next';
 import { Data, getRecent10 } from './api/db';
+import Router from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -49,6 +50,8 @@ const Home = ({ datas }: { datas: Data }) => {
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      Router.reload();
     }
   };
 

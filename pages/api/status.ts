@@ -12,10 +12,17 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const query = { date: today };
 
   if (req.method === 'PATCH') {
-    await updateOneInCollection('daily_sode', query, {
-      $set: { [req.body.target]: true },
-    });
-    res.status(200);
+    try {
+      await updateOneInCollection('daily_sode', query, {
+        $set: { [req.body.target]: true },
+      });
+      res.statusCode = 200;
+      res.setHeader('Content-Type', 'application/json');
+      res.end(JSON.stringify(res));
+    } catch (err) {
+      res.json(err);
+      res.status(405).end();
+    }
   }
 };
 
