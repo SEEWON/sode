@@ -15,9 +15,11 @@ export type Data = {
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   if (req.method === 'PUT') {
     const date = new Date();
-    const today = `${date.getFullYear()}${
-      date.getMonth() + 1
-    }${date.getDate()}`;
+    const m = date.getMonth() + 1;
+    const d = date.getDate();
+    const today = `${date.getFullYear()}${m > 9 ? '' : 0}${m}${
+      d > 9 ? '' : 0
+    }${d}`;
     const query = { date: today };
     let target;
     if (req.body.target === 's') target = 'done_s';

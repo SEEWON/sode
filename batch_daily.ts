@@ -4,14 +4,17 @@ const q = { age: { $gt: 20 } };
 const d = { $set: { name: 'Seeeean', age: 23 } };
 
 const dataInit = () => {
-  const today = new Date();
-  const date_today = `${today.getFullYear()}${
-    today.getMonth() + 1
-  }${today.getDate()}`;
-  const isWeekend = today.getDay() === 0 || today.getDay() === 6 ? true : false;
+  const date = new Date();
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  const today = `${date.getFullYear()}${m > 9 ? '' : 0}${m}${
+    d > 9 ? '' : 0
+  }${d}`;
+
+  const isWeekend = date.getDay() === 0 || date.getDay() === 6 ? true : false;
 
   const data = {
-    date: date_today,
+    date: today,
     weekend: isWeekend,
     done_s: false,
     done_w: false,
@@ -24,11 +27,15 @@ const dataInit = () => {
 };
 
 const modify_yesterday = async () => {
-  const today = new Date();
-  const date_yesterday = `${today.getFullYear()}${today.getMonth() + 1}${
-    today.getDate() - 1
-  }`;
-  const query = { date: date_yesterday };
+  const date = new Date();
+  date.setDate(date.getDate() - 1);
+  const m = date.getMonth() + 1;
+  const d = date.getDate();
+  const yesterday = `${date.getFullYear()}${m > 9 ? '' : 0}${m}${
+    d > 9 ? '' : 0
+  }${d}`;
+
+  const query = { date: yesterday };
   await updateOneInCollection('daily_sode', query, { $set: { today: false } });
 };
 modify_yesterday();
