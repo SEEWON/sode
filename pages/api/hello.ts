@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { getRecent10, updateOneInCollection } from './db';
+import { updateOneInCollection } from './db';
 
 export type Data = {
   date: string;
@@ -14,10 +14,18 @@ export type Data = {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   if (req.method === 'PUT') {
-    // updateOneInCollection;
-  } else {
-    const d = await getRecent10('daily_sode');
-    res.status(200).json(d);
+    const date = new Date();
+    const today = `${date.getFullYear()}${
+      date.getMonth() + 1
+    }${date.getDate()}`;
+    const query = { date: today };
+    let target;
+    if (req.body.target === 's') target = 'done_s';
+    else if (req.body.target === 'w') target = 'done_w';
+    else if (req.body.target === 'e') target = 'done_e';
+    else if (req.body.target === 'p') target = 'done_p';
+
+    updateOneInCollection('daily_sode', query, { $set: { target: true } });
   }
 };
 

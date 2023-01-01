@@ -30,7 +30,7 @@ const getRecent10 = async (collectionName: string): Promise<any> => {
       .find()
       .skip((await collection.countDocuments()) - 10)
       .toArray();
-    return findResult;
+    return JSON.stringify(findResult);
   } catch (err) {
     console.error(err);
   } finally {
