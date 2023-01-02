@@ -1,7 +1,4 @@
-import { insertOneInCollection, updateOneInCollection } from './pages/api/db';
-
-const q = { age: { $gt: 20 } };
-const d = { $set: { name: 'Seeeean', age: 23 } };
+import { insertOneInCollection, updateOneInCollection } from './db';
 
 const dataInit = () => {
   const date = new Date();

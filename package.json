@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "newday": "npx ts-node pages/api/batch_daily.ts"
   },
   "dependencies": {
     "@next/font": "13.1.1",
@@ -22,7 +23,9 @@
     "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "ts-node": "^10.9.1",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1"
   }
 }
