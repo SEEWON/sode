@@ -2,8 +2,8 @@ name: Run newday data
 
 on:
   schedule:
-    # 시간이 UTC 기준이므로 15시가 한국의 자정!
-    - cron: '15 0 * * *'
+    # UTC+0 기준 15시가 한국(UTC+9)의 자정!
+    - cron: '0 15 * * *'
 
 jobs:
   build:
