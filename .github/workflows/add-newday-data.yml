@@ -1,4 +1,4 @@
-name: Run newday data
+name: Add data for new day
 
 on:
   schedule:
